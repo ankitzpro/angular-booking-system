@@ -61,10 +61,11 @@ seatBook(data){
 }
 
   if(noofseats>0){
-   return this.nearestSeats(noofseats,name);
+    return this.nearestSeats(noofseats,name);
   }
   else{
-    this.toastr.success('Seats Booked Sucessfully');
+    return 1;
+    //this.toastr.success('Seats Booked Sucessfully');
   }
 
 }
@@ -137,10 +138,12 @@ this.diffArray.sort((a,b)=>a.diff-b.diff);
 else{
   break;
 }}
-this.toastr.success('Seats Booked Sucessfully');
+return 1;
+//this.toastr.success('Seats Booked Sucessfully');
 }
 else{
-  this.toastr.warning(noofseats+' seats are not available in the coach');
+  return 2;
+  //this.toastr.warning(noofseats+' seats are not available in the coach');
 }
 }
 }

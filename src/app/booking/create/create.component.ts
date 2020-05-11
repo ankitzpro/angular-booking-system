@@ -39,7 +39,13 @@ export class CreateComponent implements OnInit {
           return;
         }
         var formData=this.todos.value;
-        this.service.seatBook(formData);
+        if(result==1){
+          this.toastr.success('Seats Booked Sucessfully');
+this.todos.reset();
+        }
+        else{
+        this.toastr.warning(this.todos.controls['noofseats'].value+' seats are not available in the coach');
+        }
    }
 
 }
