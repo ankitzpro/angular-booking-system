@@ -1,0 +1,12 @@
+<h1 class="display-4">Seats</h1>
+<div class="col-md-12">
+<div class="row">
+    <div *ngFor="let seat of list; let i=index;" >
+        
+            <div *ngIf="seat.availability=='Booked'" style="width:40px" class="btn btn-success m-2 " data-toggle="tooltip" data-placement="top" title="{{seat.availability}}">{{seat.seat_no}}</div>
+            <div *ngIf="seat.availability=='Not available'" style="width:40px" class="btn btn-danger m-2" data-toggle="tooltip" data-placement="top" title="{{seat.availability}}">{{seat.seat_no}}</div>
+            <div *ngIf="seat.availability=='Available'" style="width:40px" class="btn btn-secondary m-2" data-toggle="tooltip" data-placement="top" title="{{seat.availability}}">{{seat.seat_no}}</div>
+        <div class="row" *ngIf="i%7==0"></div>
+        </div>
+    </div> 
+</div>
