@@ -1,8 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
-import { BookingService } from 'src/app/shared/booking.service';
+import { BookingService } from '../../../shared/booking.service';
 import { NgForm } from '@angular/forms';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { Validators, FormBuilder, FormGroup, FormControl} from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 
@@ -15,7 +14,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CreateComponent implements OnInit {
 
   constructor(private service: BookingService,
-    private firestore: AngularFirestore,public formBuilder: FormBuilder,private toastr: ToastrService) { }
+    public formBuilder: FormBuilder,private toastr: ToastrService) { }
 
     public todos : FormGroup;
     submitted = false;

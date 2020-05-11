@@ -61,7 +61,7 @@ seatBook(data){
 }
 
   if(noofseats>0){
-    this.nearestSeats(noofseats,name);
+   return this.nearestSeats(noofseats,name);
   }
   else{
     this.toastr.success('Seats Booked Sucessfully');
