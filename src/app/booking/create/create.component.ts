@@ -39,6 +39,7 @@ export class CreateComponent implements OnInit {
           return;
         }
         var formData=this.todos.value;
+        var result =this.service.seatBook(formData);
         if(result==1){
           this.toastr.success('Seats Booked Sucessfully');
 this.todos.reset();
