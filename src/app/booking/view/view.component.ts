@@ -9,7 +9,6 @@ import { BookingService } from '../../../shared/booking.service';
 })
 export class ViewComponent implements OnInit {
 list:Booking[];
-Arr=[];
 rows:number;
   constructor(private service:BookingService) { 
     this.list=this.service.seatlist;
@@ -19,7 +18,4 @@ rows:number;
   ngOnInit() {
   }
 
-  counter(i: number) {
-    return new Array(i);
-}
 }
