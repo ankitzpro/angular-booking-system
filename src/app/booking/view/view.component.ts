@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Booking } from '../../../app/shared/booking';
+import { Booking } from '../../../shared/booking';
 import { BookingService } from '../../../shared/booking.service';
 
 @Component({
