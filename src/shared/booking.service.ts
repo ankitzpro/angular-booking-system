@@ -48,6 +48,8 @@ seatBook(data){
        vacant_seats=0;
      }
    }
+
+
    if(vacant_seats==noofseats){
   for(var i=0;i<this.seatlist.length;i++){
 
@@ -146,4 +148,11 @@ else{
   //this.toastr.warning(noofseats+' seats are not available in the coach');
 }
 }
+
+abc(noofseats:number){
+  
+  this.rows
 }
+
+}
+
