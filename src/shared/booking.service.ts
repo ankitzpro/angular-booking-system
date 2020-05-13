@@ -36,6 +36,29 @@ seatBook(data){
  var noofseats=data.noofseats;
    var vacant_seats=0;
    var row=0;
+   var fixed=0;
+   var findfixed=0;
+
+   var seats=this.continousSeats(noofseats,name);
+   
+   if(seats>0){
+for( var e=1;e<=this.rows;e++){
+     for(var c=0;c<this.seatlist.length;c++){
+      if(this.seatlist[c].row==e && this.seatlist[c].availability=='Available'){
+        row=e;
+        fixed=+fixed+1;
+        }
+      }
+      if(noofseats==fixed){
+        findfixed=1;
+        break;
+        }
+        
+     fixed=0;
+   }
+  
+   
+   if(findfixed!=1 ){
    for(var i=0;i<this.seatlist.length;i++){
      row=this.seatlist[i].row;
      if(this.seatlist[i].availability=='Available'){
@@ -48,8 +71,10 @@ seatBook(data){
        vacant_seats=0;
      }
    }
-
-
+  }
+  else{
+    vacant_seats=fixed;
+  }
    if(vacant_seats==noofseats){
   for(var i=0;i<this.seatlist.length;i++){
 
@@ -69,6 +94,11 @@ seatBook(data){
     return 1;
     //this.toastr.success('Seats Booked Sucessfully');
   }
+}
+else{
+  return 1;
+  //this.toastr.success('Seats Booked Sucessfully');
+}
 
 }
 
@@ -149,10 +179,47 @@ else{
 }
 }
 
-abc(noofseats:number){
-  
-  this.rows
+continousSeats(noofseats:number,name:string){
+
+  var seats=noofseats;
+  var diff=0;
+  var lastbookedseat=0;
+  for( var b=1;b<=this.rows;b++){
+    for(var d=0;d<this.seatlist.length;d++){
+      if(this.seatlist[d].row==b ){
+
+      if(((d+1)%7==0 && d!=0) || (d+1==80)){
+
+        diff=(this.seatlist[d].seat_no)-lastbookedseat;
+        if(diff==noofseats){
+        break;
+        }
+        lastbookedseat=this.seatlist[d].seat_no;
+      }
+      diff=0;
+       if( this.seatlist[d].availability!='Available'){
+    diff=(this.seatlist[d].seat_no)-lastbookedseat-1;
+    if(diff==noofseats){
+    break;
+    }
+    lastbookedseat=this.seatlist[d].seat_no;
+    }
+}
+}
+  if(diff==noofseats){
+    break;
+  }
+}
+
+if(diff==noofseats){
+  for(var i=0;i<noofseats;i++){
+  this.seatlist[lastbookedseat+i].availability='Booked';
+  this.seatlist[lastbookedseat+i].booked_by=name;
+  seats=seats-1;
+  }
+}
+return seats;
+    
 }
 
 }
-
